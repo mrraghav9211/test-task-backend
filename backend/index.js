@@ -1,10 +1,10 @@
 const express = require("express");
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
 const connectDB = require("./config/mongoConn");
 const userRegisterRoute = require("./routes/userRegisrerRoute");
 
 const app = express();
-dotenv();
+dotenv.config();
 connectDB();
 app.use(express.json());
 app.use((req, res, next) => {
