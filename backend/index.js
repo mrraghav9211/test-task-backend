@@ -1,8 +1,10 @@
 const express = require("express");
+const dotenv = require('dotenv').config();
 const connectDB = require("./config/mongoConn");
 const userRegisterRoute = require("./routes/userRegisrerRoute");
 
 const app = express();
+dotenv();
 connectDB();
 app.use(express.json());
 app.use((req, res, next) => {
@@ -21,4 +23,4 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRegisterRoute);
 
-app.listen(5000, () => console.log("Server started at localhost 5000"));
+app.listen(process.env.PORT, () => console.log(`Server started at localhost ${process.env.PORT}`));
